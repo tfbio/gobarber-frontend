@@ -5,10 +5,14 @@ import React, {
   useState,
   useCallback,
 } from 'react';
-import { IconBaseProps } from 'react-icons';
-import { useField } from '@unform/core';
 
-import { Container } from './styles';
+import { IconBaseProps } from 'react-icons';
+import { FiAlertCircle } from 'react-icons/fi';
+
+import { useField } from '@unform/core';
+import Tooltip from '../Tooltip';
+
+import { Container, Error } from './styles';
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   name: string;
@@ -41,7 +45,7 @@ const Input: React.FC<InputProps> = ({ icon: Icon, name, ...rest }) => {
   }, []);
 
   return (
-    <Container isFilled={isFilled} isFocused={isFocused}>
+    <Container hasError={!!error} isFilled={isFilled} isFocused={isFocused}>
       {Icon && <Icon size={20} />}
       <input
         defaultValue={defaultValue}
@@ -51,7 +55,11 @@ const Input: React.FC<InputProps> = ({ icon: Icon, name, ...rest }) => {
         {...rest}
       />
 
-      {error}
+      {error && (
+        <Error textMsg={error}>
+          <FiAlertCircle size={20} color="#c53030" />
+        </Error>
+      )}
     </Container>
   );
 };
