@@ -1,12 +1,15 @@
 import React from 'react';
 
 import Routes from './routes';
+import { AuthProvider } from './hooks/authContext';
 
 import GlobalStyle from './styles/global';
 
 const App: React.FC = () => (
   <>
-    <Routes />
+    <AuthProvider>
+      <Routes />
+    </AuthProvider>
     <GlobalStyle />
   </>
 );

@@ -29,6 +29,7 @@
         "prettier"
     ],
     "rules": {
+      "@typescript-eslint/ban-types": "warn",
       "react/jsx-props-no-spreading": "off",
       "spaced-comment": "off",
       "prettier/prettier": "error",
