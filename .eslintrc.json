@@ -30,6 +30,7 @@
     ],
     "rules": {
       "@typescript-eslint/ban-types": "warn",
+      "@typescript-eslint/explicit-module-boundary-types": "off",
       "react/jsx-props-no-spreading": "off",
       "spaced-comment": "off",
       "prettier/prettier": "error",

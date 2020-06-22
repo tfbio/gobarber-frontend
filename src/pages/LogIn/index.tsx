@@ -12,7 +12,9 @@ import Button from '../../components/Button';
 import Input from '../../components/Input';
 
 import getValidationError from '../../utils/getValidationErrors';
+
 import { useAuth } from '../../hooks/authContext';
+import { useToast } from '../../hooks/toastContext';
 
 interface LoginFormData {
   email: string;
@@ -23,6 +25,7 @@ const LogIn: React.FC = () => {
   const formRef = useRef<FormHandles>(null);
 
   const { login } = useAuth();
+  const { addToast, removeToast } = useToast();
 
   const handleLogin = useCallback(
     async (data: LoginFormData) => {
@@ -38,16 +41,24 @@ const LogIn: React.FC = () => {
           abortEarly: false,
         });
 
-        login({
+        await login({
           email: data.email,
           password: data.password,
         });
       } catch (err) {
-        const errors = getValidationError(err);
-        formRef.current?.setErrors(errors);
+        if (err instanceof Yup.ValidationError) {
+          const errors = getValidationError(err);
+          formRef.current?.setErrors(errors);
+        }
+
+        addToast({
+          type: 'error',
+          title: 'Login Error',
+          description: 'check if email and password are correct',
+        });
       }
     },
-    [login],
+    [login, addToast],
   );
 
   return (
