@@ -1,5 +1,5 @@
 import React, { useCallback, useRef } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { Form } from '@unform/web';
 import { FormHandles } from '@unform/core';
 import { FiLogIn, FiMail, FiLock } from 'react-icons/fi';
@@ -25,7 +25,8 @@ const LogIn: React.FC = () => {
   const formRef = useRef<FormHandles>(null);
 
   const { login } = useAuth();
-  const { addToast, removeToast } = useToast();
+  const history = useHistory();
+  const { addToast } = useToast();
 
   const handleLogin = useCallback(
     async (data: LoginFormData) => {
@@ -45,20 +46,24 @@ const LogIn: React.FC = () => {
           email: data.email,
           password: data.password,
         });
+
+        history.push('/dashboard');
       } catch (err) {
         if (err instanceof Yup.ValidationError) {
           const errors = getValidationError(err);
           formRef.current?.setErrors(errors);
+
+          return;
         }
 
         addToast({
           type: 'error',
           title: 'Login Error',
-          description: 'check if email and password are correct',
+          description: 'A problem happened during login',
         });
       }
     },
-    [login, addToast],
+    [login, addToast, history],
   );
 
   return (
