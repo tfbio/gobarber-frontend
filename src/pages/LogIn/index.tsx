@@ -84,7 +84,7 @@ const LogIn: React.FC = () => {
 
           <Button type="submit">Login</Button>
 
-          <a href="/">Forgot my password</a>
+          <Link to="/forgotpassword">Forgot my password</Link>
         </Form>
 
         <Link to="/register">
