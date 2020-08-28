@@ -1,4 +1,4 @@
-import React, { useCallback, useRef } from 'react';
+import React, { useCallback, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import * as Yup from 'yup';
 import { Form } from '@unform/web';
@@ -13,23 +13,30 @@ import logo from '../../assets/logo.svg';
 
 import Button from '../../components/Button';
 import Input from '../../components/Input';
+import api from '../../services/api';
 
 interface ForgotFormData {
   email: string;
 }
 
 const ForgotPassword: React.FC = () => {
+  const [loading, setLoading] = useState(false);
+
   const formRef = useRef<FormHandles>(null);
   const { addToast } = useToast();
 
   const handleSubmit = useCallback(
     async (data: ForgotFormData) => {
       try {
+        setLoading(true);
         const schema = Yup.object().shape({
           email: Yup.string().required('An valid email is required').email(),
         });
+        await schema.validate(data, { abortEarly: false });
 
-        await schema.validate(data);
+        await api.post('/password/forgot', {
+          email: data.email,
+        });
 
         addToast({
           type: 'success',
@@ -49,6 +56,8 @@ const ForgotPassword: React.FC = () => {
           title: 'Request failed',
           description: 'An error occured during your request for new password',
         });
+      } finally {
+        setLoading(false);
       }
     },
     [addToast],
@@ -63,7 +72,9 @@ const ForgotPassword: React.FC = () => {
           <h1>Password Recovery</h1>
           <Input name="email" icon={FiMail} type="text" placeholder="E-mail" />
 
-          <Button type="submit">Submit</Button>
+          <Button loading={loading} type="submit">
+            Submit
+          </Button>
         </Form>
 
         <Link to="/">
