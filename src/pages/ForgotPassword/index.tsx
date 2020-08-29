@@ -53,7 +53,7 @@ const ForgotPassword: React.FC = () => {
 
         addToast({
           type: 'error',
-          title: 'Request failed',
+          title: 'Request Error',
           description: 'An error occured during your request for new password',
         });
       } finally {
