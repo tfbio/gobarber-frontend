@@ -18,8 +18,18 @@ export const HeaderContent = styled.div`
     height: 80px;
   }
 
-  button {
+  a {
     margin-left: auto;
+    color: #999591;
+
+    > svg {
+      width: 28px;
+      height: 28px;
+    }
+  }
+
+  button {
+    margin-left: 42px;
     background: transparent;
     border: 0;
 
@@ -35,6 +45,7 @@ export const Profile = styled.div`
   display: flex;
   align-items: center;
   margin-left: 80px;
+  margin-right: auto;
 
   img {
     width: 58px;
@@ -53,8 +64,13 @@ export const Profile = styled.div`
     color: #f4ede8;
   }
 
-  strong {
+  a {
+    text-decoration: none;
     color: #ff9000;
+
+    &:hover {
+      opacity: 0.8;
+    }
   }
 `;
 
