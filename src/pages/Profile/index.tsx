@@ -1,4 +1,4 @@
-import React, { ChangeEvent, FormEvent, useCallback, useRef } from 'react';
+import React, { ChangeEvent, useCallback, useRef } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { Form } from '@unform/web';
 import { FormHandles } from '@unform/core';
@@ -36,20 +36,54 @@ const Profile: React.FC = () => {
         const schema = Yup.object().shape({
           name: Yup.string().required('Name is required'),
           email: Yup.string().required('Valid e-mail is required').email(),
-          password: Yup.string().min(8),
+          oldPassword: Yup.string().min(8),
+          newPassword: Yup.string().when('oldPassword', {
+            is: (value) => !!value.lenght,
+            then: Yup.string().required('This field is required').min(8),
+            otherwise: Yup.string(),
+          }),
+          password_confirm: Yup.string()
+            .when('oldPassword', {
+              is: (value) => !!value.lenght,
+              then: Yup.string().required('This field is required').min(8),
+              otherwise: Yup.string(),
+            })
+            .oneOf([Yup.ref('password'), undefined], 'passwords must match'),
         });
 
         await schema.validate(data, {
           abortEarly: false,
         });
 
-        await api.post('/user', data);
-        history.push('/');
+        const {
+          name,
+          email,
+          oldPassword,
+          newPassword,
+          password_confirm,
+        } = data;
+
+        const formData = {
+          name,
+          email,
+          ...(oldPassword
+            ? {
+                oldPassword,
+                newPassword,
+                password_confirm,
+              }
+            : {}),
+        };
+
+        const response = await api.put('/profile', formData);
+        updateUser(response.data);
+
+        history.push('/dashboard');
 
         addToast({
           type: 'success',
-          title: 'Account Created!',
-          description: 'Your account was successefully created',
+          title: 'Account Updated!',
+          description: 'Your account info was successefully updated',
         });
       } catch (err) {
         if (err instanceof Yup.ValidationError) {
@@ -61,8 +95,8 @@ const Profile: React.FC = () => {
 
         addToast({
           type: 'error',
-          title: 'Register Error',
-          description: 'A problem happened during account register',
+          title: 'Update Error',
+          description: 'A problem happened during account info update',
         });
       }
     },
