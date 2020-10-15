@@ -26,7 +26,7 @@ const Profile: React.FC = () => {
   const formRef = useRef<FormHandles>(null);
   const history = useHistory();
   const { addToast } = useToast();
-  const { user } = useAuth();
+  const { user, updateUser } = useAuth();
 
   const handleSubmit = useCallback(
     async (data: ProfileData) => {
@@ -68,9 +68,24 @@ const Profile: React.FC = () => {
   );
 
   const handleAvatarChange = useCallback(
-    (e: ChangeEvent<HTMLInputElement>) => {},
-    [],
+    (e: ChangeEvent<HTMLInputElement>) => {
+      if (e.target.files) {
+        const data = new FormData();
+        data.append('profile', e.target.files[0]);
+
+        api.patch('/user/avatar').then((response) => {
+          updateUser(response.data);
+
+          addToast({
+            type: 'success',
+            title: 'Profile Pic Changed.',
+          });
+        });
+      }
+    },
+    [addToast, updateUser],
   );
+
   return (
     <Container>
       <header>
