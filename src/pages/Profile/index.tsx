@@ -18,8 +18,10 @@ import { useAuth } from '../../hooks/authContext';
 
 interface ProfileData {
   name: string;
-  password: string;
   email: string;
+  oldPassword: string;
+  newPassword: string;
+  password_confirm: string;
 }
 
 const Profile: React.FC = () => {
