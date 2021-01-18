@@ -25,7 +25,7 @@
 # :mag: Overview
 
 **Frontend web of a complete fictional application for scheduling and keeping track of barber services and appointments times.**
-**Developed with React using [styled-components](https://styled-components.com/) for pages and components css definitions, [Jest](https://jestjs.io/) for testing and Context API
+**Developed with React using [styled-components](https://styled-components.com/)/[polished](https://polished.js.org/) for pages and components css definitions, [Jest](https://jestjs.io/) for testing and Context API
 was used instead of the Redux approach.**
 
 **This application was one main goal of the Rockeseat bootcamp 2020.**
