@@ -41,4 +41,4 @@ was used instead of the Redux approach.**
 # :factory: How to Run
 
 # :e-mail: Sidenote
-As in many projects where more functionalities always can be added, this "finished" project could grow into an even more amazing learning experince, but for now I'm just moving on to other projects in mind (jan/2021).
+**As in many projects where more functionalities always can be added, this "finished" project could grow into an even more amazing learning experince, but for now I'm just moving on to other projects in mind (jan/2021).**
