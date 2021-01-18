@@ -19,7 +19,8 @@
 * [Overview](#mag-overview)
 * [Important](#heavy_exclamation_mark-important)
 * [Setup](#wrench-setup)
-* [Running](#factory-running)
+* [How to Run](#factory-how-to-run)
+* [Sidenote](#e-mail-sidenote)
 
 # :mag: Overview
 
@@ -37,4 +38,7 @@ was used instead of the Redux approach.**
 
 # :wrench: Setup
 
-# :factory: Running
+# :factory: How to Run
+
+# :e-mail: Sidenote
+As in many projects where more functionalities always can be added, this "finished" project could grow into an even more amazing learning experince, but for now I'm just moving on to other projects in mind (jan/2021).
