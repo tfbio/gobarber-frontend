@@ -1,10 +1,10 @@
 <p align="center">
-     <img src="https://github.com/tfbio/gobarber-frontend/blob/master/github/gb_register.jpg"/> 
    <img src="https://github.com/tfbio/gobarber-frontend/blob/master/src/assets/logo.svg"/>
 </p>
 <br />
 <p>
   <img src="https://github.com/tfbio/gobarber-frontend/blob/master/github/gb_main.jpg"/>
+  <img src="https://github.com/tfbio/gobarber-frontend/blob/master/github/gb_register.jpg"/> 
 </p>
 <h1 align="center">GoBarber Web<h1>
   
