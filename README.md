@@ -28,7 +28,7 @@
 **Developed with React using [styled-components](https://styled-components.com/)/[polished](https://polished.js.org/) for pages and components css definitions, [Jest](https://jestjs.io/) for testing and Context API
 was used instead of the Redux approach.**
 
-**This application was one main goal of the Rockeseat bootcamp 2020.**
+**Application developed during the Rockeseat Bootcamp.**
 
 # :heavy_exclamation_mark: Important
 
