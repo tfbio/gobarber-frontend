@@ -11,7 +11,7 @@
 [![Author](https://img.shields.io/badge/author-Tfbio-brightgreen)](https://github.com/tfbio)
 [![Author](https://img.shields.io/badge/author-Rocketseat-brightgreen)](https://github.com/Rocketseat)
 [![Category](https://img.shields.io/badge/category-personal_project-brightgreen)](#)
-[![Status](https://img.shields.io/badge/status-finished-brightgreen)](#)
+[![Status](https://img.shields.io/badge/status-ongoing-brightgreen)](#)
 
 ---
 # :clipboard: Table of Contents
@@ -41,4 +41,4 @@ was used instead of the Redux approach.**
 # :factory: How to Run
 
 # :e-mail: Sidenote
-**As in many projects where more functionalities always can be added, this "finished" project could grow into an even more amazing learning experince, but for now I'm just moving on to other projects in mind (jan/2021).**
+**This project was on hold while I was dedicating time to studies and other projects. While frontend and backend are functional, mobile part still has work to be done.**
